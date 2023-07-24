@@ -1,6 +1,7 @@
 import React from 'react';
 import { ReactComponent as DividerFire } from '/src/assets/divider-fire.svg';
 import PokemonType from '../PokemonType/PokemonType';
+import MoreDetails from '../MoreDetails/MoreDetails';
 
 const HeroSection = () => {
   return (
@@ -23,6 +24,10 @@ const HeroSection = () => {
             mouth, long, pointed ears with black tips, and brown eyes. Each
             cheek is a red circle that contains a pouch for electricity storage.
           </p>
+          <MoreDetails
+            type='electric'
+            onClick={() => console.log('f')}
+          ></MoreDetails>
         </div>
 
         <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/25.png'></img>

@@ -16,6 +16,7 @@ const PokemonType = ({ type }: PokemonTypeProps) => {
   return (
     <button
       className='flex flex-shrink-0 mr-1 text-white capitalize  items-center justify-between px-2 py-1 rounded-lg font-sans mb-1'
+      disabled
       style={{
         backgroundColor: color,
       }}
