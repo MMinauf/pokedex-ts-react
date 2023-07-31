@@ -11,7 +11,7 @@ export const fetchPokemon = async (pokemon: string) => {
 
     const data = await response.data;
 
-    return data;
+    return { data };
   } catch (error) {
     console.log(error);
     return error;
