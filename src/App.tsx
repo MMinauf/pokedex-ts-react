@@ -6,9 +6,12 @@ import { useEffect, useState } from 'react';
 import { Pokemon } from './components/types/Pokemon';
 import Pokedex from './components/Pokedex/Pokedex';
 import { fetchPokemonList } from './api/fetchPokemonList';
+import PokemonModal from './components/PokemonModal/PokemonModal';
 
 function App() {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
+  const [modal, setModal] = useState<boolean>(false);
+  const [pokemonData, setPokemonData] = useState<Pokemon>();
 
   useEffect(() => {
     (async () => {
@@ -27,6 +30,7 @@ function App() {
 
   return (
     <>
+      <PokemonModal setModal={setModal}></PokemonModal>
       <Header></Header>
       <HeroSection></HeroSection>
       <FilterSection></FilterSection>
