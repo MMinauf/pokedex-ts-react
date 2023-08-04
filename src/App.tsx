@@ -16,25 +16,25 @@ function App() {
   useEffect(() => {
     (async () => {
       setPokemonList(await fetchPokemonList(1));
-      console.log('lista');
-      console.log(pokemonList);
     })();
   }, []);
 
-  /* let data;
-  async function setData() {
-    data = await getPokemonList(1);
-    console.log('u funkciji');
-    console.log(data);
-  } */
-
   return (
     <>
-      <PokemonModal setModal={setModal}></PokemonModal>
+      {modal && pokemonData && (
+        <PokemonModal pokemon={pokemonData} setModal={setModal}></PokemonModal>
+      )}
       <Header></Header>
-      <HeroSection></HeroSection>
+      <HeroSection
+        setPokemonData={setPokemonData}
+        setModal={setModal}
+      ></HeroSection>{' '}
       <FilterSection></FilterSection>
-      <Pokedex pokemonList={pokemonList}></Pokedex>
+      <Pokedex
+        pokemonList={pokemonList}
+        setModal={setModal}
+        setPokemonData={setPokemonData}
+      ></Pokedex>
     </>
   );
 }

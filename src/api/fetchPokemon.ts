@@ -9,11 +9,10 @@ export const fetchPokemon = async (pokemon: string) => {
   try {
     const response = await baseAPI.get(`/pokemon/${pokemon}`);
 
-    const data = await response.data;
+    const data: Pokemon = await response.data;
 
-    return { data };
-  } catch (error) {
-    console.log(error);
-    return error;
+    return { data, response };
+  } catch (err) {
+    console.log(err);
   }
 };

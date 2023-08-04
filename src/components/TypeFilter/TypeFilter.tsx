@@ -10,7 +10,7 @@ const TypeFilter = () => {
       </h1>
       <div className='flex items-center flex-wrap'>
         {pokemonTypes.map((item) => {
-          return <PokemonType type={item.name}></PokemonType>;
+          return <PokemonType key={item.name} type={item.name}></PokemonType>;
         })}
       </div>
     </div>

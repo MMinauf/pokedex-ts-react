@@ -2,8 +2,21 @@ import React from 'react';
 import { ReactComponent as DividerFire } from '/src/assets/divider-fire.svg';
 import PokemonType from '../PokemonType/PokemonType';
 import MoreDetails from '../MoreDetails/MoreDetails';
+import { Pokemon } from '../types/Pokemon';
+import { fetchPokemon } from '../../api/fetchPokemon';
 
-const HeroSection = () => {
+type HeroSectionProps = {
+  setModal: (value: boolean) => void;
+  setPokemonData: (data: Pokemon) => void;
+};
+
+const HeroSection = ({ setModal, setPokemonData }: HeroSectionProps) => {
+  const handleClick = async () => {
+    const requestPokemon = await fetchPokemon('pikachu');
+    if (requestPokemon?.data) setPokemonData(requestPokemon.data);
+    setModal(true);
+  };
+
   return (
     <div className='flex justify-center bg-gradient-to-b from-orange-600 to-red-800'>
       <div className='flex flex-col sm:flex-row m-5 justify-between w-screen items-center  max-w-screen-xl'>
@@ -24,10 +37,7 @@ const HeroSection = () => {
             mouth, long, pointed ears with black tips, and brown eyes. Each
             cheek is a red circle that contains a pouch for electricity storage.
           </p>
-          <MoreDetails
-            type='electric'
-            onClick={() => console.log('f')}
-          ></MoreDetails>
+          <MoreDetails type='electric' onClick={handleClick}></MoreDetails>
         </div>
 
         <img src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/25.png'></img>

@@ -12,19 +12,11 @@ export const fetchPokemonList = async (page: number) => {
 
   const data = await response.data;
 
-  console.log('data');
-  console.log(data);
-
   const promises = data.results.map(
     async (pokemon: { name: string }) => (await fetchPokemon(pokemon.name)).data
   );
 
-  console.log('promises');
-  console.log(promises);
-
   const pokemonList = Promise.all(promises);
-  console.log('pl');
-  console.log(pokemonList);
 
   return pokemonList;
 };
