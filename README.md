@@ -1,4 +1,4 @@
 # pokedex-ts-react
 
-Pokedex app made with react and typescript
+Pokedex app made with react,typescript and react query
 .
