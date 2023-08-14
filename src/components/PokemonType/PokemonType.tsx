@@ -3,9 +3,11 @@ import { pokemonTypes } from '../../pokemonTypes';
 
 type PokemonTypeProps = {
   type: string;
+  disabled: boolean;
+  setTypeFilter?: (data: string) => void;
 };
 
-const PokemonType = ({ type }: PokemonTypeProps) => {
+const PokemonType = ({ type, disabled, setTypeFilter }: PokemonTypeProps) => {
   const [{ name, color }] = pokemonTypes.filter((item) => item.name === type);
 
   const imgUrl = new URL(
@@ -15,8 +17,9 @@ const PokemonType = ({ type }: PokemonTypeProps) => {
 
   return (
     <button
+      onClick={() => setTypeFilter?.(name)}
       className='flex flex-shrink-0 mr-1 text-white capitalize  items-center justify-between px-2 py-1 rounded-lg font-sans mb-1'
-      disabled
+      disabled={disabled}
       style={{
         backgroundColor: color,
       }}

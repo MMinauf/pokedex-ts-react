@@ -14,6 +14,8 @@ function App() {
   //const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
   const [modal, setModal] = useState<boolean>(false);
   const [pokemonData, setPokemonData] = useState<Pokemon>();
+  const [loading, setLoading] = useState(false);
+  const [typeFilter, setTypeFilter] = useState('');
 
   /*useEffect(() => {
     (async () => {
@@ -23,9 +25,22 @@ function App() {
 */
 
   const { isFetching, data: pokemonList } = useQuery({
-    queryKey: ['pokemonList'],
+    queryKey: ['pokemonList', typeFilter],
     queryFn: async () => fetchPokemonList(1),
+    select: (data) => {
+      if (typeFilter.length > 0)
+        return data.filter((item) =>
+          item.types.some((type) => type.type.name === typeFilter)
+        );
+      else return data;
+    },
   });
+
+  /*   const beautyProducts = temp1.filter((product) =>
+    product.categories.some((cat) => cat.id === 43)
+  ); */
+
+  console.log(typeFilter);
 
   return (
     <>
@@ -37,10 +52,11 @@ function App() {
         setPokemonData={setPokemonData}
         setModal={setModal}
       ></HeroSection>
-      <FilterSection></FilterSection>
+      <FilterSection setTypeFilter={setTypeFilter}></FilterSection>
       {pokemonList && (
         <Pokedex
           isFetching={isFetching}
+          setLoading={setLoading}
           pokemonList={pokemonList}
           setModal={setModal}
           setPokemonData={setPokemonData}

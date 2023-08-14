@@ -9,12 +9,13 @@ export const baseAPI = axios.create({
 export const fetchPokemonList = async (page: number): Promise<Pokemon[]> => {
   const offset = 9 * (page - 1);
 
-  const response = await baseAPI.get(`/pokemon?offset=${offset}&limit=9`);
+  const response = await baseAPI.get(`/pokemon`);
 
   const data = await response.data;
 
   const promises = data.results.map(
-    async (pokemon: { name: string }) => (await fetchPokemon(pokemon.name)).data
+    async (pokemon: { name: string }) =>
+      (await fetchPokemon(pokemon.name))?.data
   );
 
   const pokemonList = Promise.all(promises);

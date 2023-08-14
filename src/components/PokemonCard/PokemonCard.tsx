@@ -49,7 +49,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({
         </h1>
         <div className='flex flex-wrap mt-2'>
           {pokemon.types.map(({ type }) => (
-            <PokemonType key={type.name} type={type.name} />
+            <PokemonType disabled={true} key={type.name} type={type.name} />
           ))}
         </div>
 

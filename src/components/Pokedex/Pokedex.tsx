@@ -8,6 +8,7 @@ type PokedexProps = {
   setModal: (value: boolean) => void;
   setPokemonData: (data: Pokemon) => void;
   isFetching: boolean;
+  setLoading: (value: boolean) => void;
 };
 
 const Pokedex: React.FC<PokedexProps> = ({
@@ -15,6 +16,7 @@ const Pokedex: React.FC<PokedexProps> = ({
   setModal,
   setPokemonData,
   isFetching,
+  setLoading,
 }: PokedexProps) => {
   return (
     <div className='flex justify-center bg-gradient-to-b from-red-950 to-black '>
