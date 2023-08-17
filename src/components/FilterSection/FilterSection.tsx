@@ -10,10 +10,13 @@ type FilterSectionProps = {
 const FilterSection = ({ setTypeFilter }: FilterSectionProps) => {
   return (
     <div className='flex justify-center bg-gradient-to-b from-red-800 to-red-950'>
-      <div className='m-5 w-screen  max-w-screen-xl '>
+      <div className='mx-5 w-screen  max-w-screen-xl mb-4'>
         <HomeButton onClick={() => console.log('first')}></HomeButton>
-        <TypeFilter setTypeFilter={setTypeFilter}></TypeFilter>
-        <SearchFilter onSubmit={() => console.log('first')}></SearchFilter>
+
+        <div className='grid grid-cols-1 grid-rows-2 md:grid-cols-6 md:grid-rows-1 items-end justify-between'>
+          <TypeFilter setTypeFilter={setTypeFilter}></TypeFilter>
+          <SearchFilter onSubmit={() => console.log('first')}></SearchFilter>
+        </div>
       </div>
     </div>
   );
