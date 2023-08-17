@@ -7,7 +7,7 @@ type SearchFilterProps = {
 
 const SearchFilter: React.FC<SearchFilterProps> = ({ onSubmit }) => {
   return (
-    <form className='md:col-span-4 md:ml-3 '>
+    <form className='md:col-span-4 md:ml-5 '>
       <label className='mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white'>
         Search
       </label>

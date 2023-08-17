@@ -9,7 +9,7 @@ export const baseAPI = axios.create({
 export const fetchPokemonList = async (page: number): Promise<Pokemon[]> => {
   const offset = 9 * (page - 1);
 
-  const response = await baseAPI.get(`/pokemon`);
+  const response = await baseAPI.get(`/pokemon?offset=${offset}&limit=9`);
 
   const data = await response.data;
 
