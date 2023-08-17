@@ -2,5 +2,5 @@
 
 ## WORK IN PROGRESS
 
-Pokedex app made with react,typescript and react query
+Pokedex app made with react,typescript, react query and tailwind
 .
