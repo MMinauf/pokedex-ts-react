@@ -12,7 +12,7 @@ export const fetchPokemonList = async (page: number): Promise<Pokemon[]> => {
   const response = await baseAPI.get(`/pokemon?offset=${offset}&limit=9`);
 
   const data = await response.data;
-
+  console.log('d');
   const promises = data.results.map(
     async (pokemon: { name: string }) =>
       (await fetchPokemon(pokemon.name))?.data
